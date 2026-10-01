@@ -2,24 +2,30 @@
 
 Bu liste, Streakly'nin iOS ve Android'de çalışan basit bir alışkanlık takip uygulaması olarak ilk sürümünü kapsar.
 
-## MVP — ilk kullanılabilir sürüm
+## P0 — MVP / ilk kullanılabilir sürüm
 
-- [ ] .NET MAUI projesini Android ve iOS hedefleriyle oluştur
-- [ ] Turuncu ve siyah tonlarında, okunabilir ve sade bir ekran tasarımı hazırla
-- [ ] Bugünün alışkanlıklarını gösteren ana ekranı oluştur
-- [ ] Alışkanlık ekleme, düzenleme ve silme akışlarını ekle
-- [ ] Bir alışkanlığı bugün için tamamlandı olarak işaretleme özelliği ekle
-- [ ] Alışkanlıkları ve günlük tamamlanma kayıtlarını cihazda SQLite ile sakla
-- [ ] Uygulama yeniden açıldığında verilerin korunduğunu doğrula
-- [ ] Seri hesaplamaları için testler yaz
+- [ ] .NET MAUI projesini Android ve iOS hedefleriyle oluştur; İngilizce, Türkçe ve Almanca yerelleştirmeyi ekle
+- [ ] Turuncu-siyah, okunaklı ve erişilebilir temel arayüzü oluştur
+- [ ] Haftanın günleri seçilebilen alışkanlık ekleme, düzenleme ve arşivleme akışlarını ekle
+- [ ] Bugün planlanmış alışkanlıkları ve tamamlanma durumlarını gösteren ana ekranı oluştur
+- [ ] Alışkanlıkları yerel SQLite veritabanında sakla; uygulama çevrimdışıyken çalıştığını doğrula
+- [ ] Alışkanlık başına günlük tamamlama kaydı oluştur; yinelenen kayıtları engelle
+- [ ] Her alışkanlık için ayrı seriyi hesapla; boşta kalan planlanmamış günler seriyi bozmasın
+- [ ] Yerel tarih ve saat kurallarını test et: gece yarısı öncesi/sonrası, kaçırılan planlı gün ve planlanmamış gün
+- [ ] Yaz/kış saati geçişi, saat dilimi değişikliği ve uygulamanın gece yarısında kapalı olması senaryolarını test et
 - [ ] Android emülatöründe temel akışları test et
 
-## Daha sonraya bırak
+## P1 — MVP sonrasında
 
 - [ ] Hatırlatma bildirimleri ekle
-- [ ] Haftalık ve aylık ilerleme görünümü ekle
-- [ ] iOS'ta test et ve dağıtım için yapılandır
-- [ ] İhtiyaç netleşirse hesap, yedekleme veya cihazlar arası eşitlemeyi değerlendir
+- [ ] Tamamlanma geçmişi/takvim ve ilerleme özetleri ekle
+- [ ] Kullanılabilirlik ve erişilebilirlik testleri yapıp iyileştirmeleri uygula
+
+## P2 — ürün ihtiyacı doğrulanınca
+
+- [ ] Hesap, yedekleme ve cihazlar arası eşitleme ihtiyacını değerlendir
+- [ ] Abonelik ve paywall ihtiyacını değerlendir; MVP'de zorunlu abonelik yok
+- [ ] iOS derleme, cihaz testi ve dağıtımını macOS/Xcode ile yapılandır
 
 ## Önerilen basit mimari
 
