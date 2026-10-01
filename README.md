@@ -4,6 +4,8 @@
 
 [Project checklist (Turkish)](TODO.md)
 
+[Use cases (Turkish)](docs/use-cases.md)
+
 Streakly App is a productivity and habit-tracking application designed to help people build consistency by tracking daily actions, streaks, and momentum over time.
 
 ## Project goal

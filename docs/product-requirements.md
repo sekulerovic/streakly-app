@@ -7,7 +7,7 @@
 
 ## 1. Product vision
 
-Streakly is a simple, local-first habit tracker. It helps users create habits, choose the days they plan to do them, check off completions, and understand their consistency through a separate streak for each habit.
+Streakly is a simple, local-first activity tracker. Users can manage recurring habits and one-time dated tasks, check off completions, and add a short note with context about what they did.
 
 The first release prioritizes a useful, reliable habit-tracking loop over monetization, accounts, or social features. The app must work offline.
 
@@ -19,7 +19,7 @@ The first release prioritizes a useful, reliable habit-tracking loop over moneti
 
 | Priority | Scope |
 |---|---|
-| P0 | Android and iOS MAUI app; English, Turkish, and German; dark orange-and-black UI; create/edit/archive habits; choose weekdays; complete habits for the current local date; show each habit's current streak; persist locally in SQLite; test date and streak rules. |
+| P0 | Android and iOS MAUI app; English, Turkish, and German; dark orange-and-black UI; recurring habits with selected weekdays and per-habit streaks; one-time tasks with due date and optional due time; one-tap completion and optional short notes; local SQLite; test date and streak rules. |
 | P1 | Reminders; completion history and calendar; summaries and progress views; accessibility and usability refinements from testing. |
 | P2 | Accounts, cloud backup/sync, social features, subscriptions, paywall, and other monetization. Consider only after validating the core app. |
 
@@ -47,15 +47,19 @@ Use a simple dark interface with orange accents:
 
 Use orange for emphasis and primary actions, not as the background for large text areas. Maintain readable contrast, scalable text, semantic labels, and keyboard/screen-reader accessibility where supported.
 
-### PR-04: Habit management
+### PR-04: Recurring habit management
 
-Users must be able to create, edit, and archive a habit. A habit has at least a name and one or more selected weekdays. Archived habits must no longer appear as due today, while their previous completion records remain stored.
+Users must be able to create, edit, and archive a recurring habit. A habit has a name and one or more selected weekdays. It may also have an optional short note. Archived habits must no longer appear as due today, while their previous completion records remain stored.
 
 ### PR-05: Daily completion
 
-The home screen must show active habits scheduled for the current local date and whether each is complete. A user can mark a scheduled habit complete for today. Repeated taps must not create duplicate completion records for that habit and date.
+The home screen must show active habits scheduled for the current local date and whether each is complete. A user can mark a scheduled habit complete for today with one simple action. A user may attach an optional short note to the completion, such as the book title and pages read, or what yoga they practiced. Notes are not required and do not determine completion state or streak. Repeated taps must not create duplicate completion records for that habit and date.
 
-### PR-06: Per-habit streak
+### PR-06: One-time dated task
+
+Users must also be able to create a one-time task with a title, a required local due date, and an optional local due time and short note. Example: “Clean the garden lawn”, due tomorrow at a chosen morning time. The app shows due and overdue tasks separately from recurring habits. Completing a one-time task closes it; one-time tasks do not have streaks in the MVP.
+
+### PR-07: Per-habit streak
 
 Show a separate current streak for each habit. A streak counts consecutive *scheduled occurrences* completed, not consecutive calendar days:
 
@@ -65,6 +69,8 @@ Show a separate current streak for each habit. A streak counts consecutive *sche
 - Completing today's occurrence extends that habit's streak by one scheduled occurrence.
 - A habit with no completed scheduled occurrences has a streak of zero.
 
+Only recurring habits have streaks in the MVP. Completing, missing, or editing a one-time task never changes any habit streak.
+
 ## 4. Local date, time, and streak rules
 
 These rules are normative and must be covered by automated tests.
@@ -73,9 +79,10 @@ These rules are normative and must be covered by automated tests.
 2. **Completion date:** When a user completes a habit, persist the associated local date as a date-only value (`yyyy-MM-dd`) and also persist the event timestamp in UTC for audit/debugging. The saved completion date must not change when the device time zone changes later.
 3. **Scheduled days:** Interpret selected weekdays in the device's current local calendar. An unselected weekday is not a due occurrence and neither adds to nor breaks a streak.
 4. **End-of-day boundary:** A scheduled occurrence remains eligible to be completed until the next local midnight. A missed occurrence becomes a streak break at that midnight. Do not use a fixed 24-hour duration; local days can be shorter or longer during daylight-saving transitions.
-5. **Streak evaluation:** Recalculate from the saved completion dates and the habit's scheduled weekdays whenever the app opens or resumes and after a completion or schedule edit. Do not rely on a timer that must run continuously in the background.
-6. **Time-zone changes:** Keep previously stored completion dates unchanged. Apply the device's current local calendar and time zone to the current date and future due-day evaluation. A time-zone change alone must not delete or rewrite completion history.
-7. **Clock changes:** Use an injectable clock/date provider in streak logic so tests can set local dates, times, and time zones deterministically. Do not build core streak behavior around sleeping background tasks.
+5. **Task due time:** Store a task's due date as a local date-only value. If a due time is provided, interpret it as local wall-clock time in the device's current time zone; the task becomes overdue after that local time. Without a due time, the task is due on that local date and becomes overdue after that date ends. Due times organize tasks in the MVP; reminder notifications are deferred.
+6. **Streak evaluation:** Recalculate from the saved completion dates and the habit's scheduled weekdays whenever the app opens or resumes and after a completion or schedule edit. Do not rely on a timer that must run continuously in the background.
+7. **Time-zone changes:** Keep previously stored completion dates and task due dates unchanged. Apply the device's current local calendar and time zone to the current date and future due-day evaluation. A time-zone change alone must not delete or rewrite stored dates.
+8. **Clock changes:** Use an injectable clock/date provider in date-sensitive logic so tests can set local dates, times, and time zones deterministically. Do not build core streak behavior around sleeping background tasks.
 
 ## 5. Data and architecture
 
@@ -92,7 +99,7 @@ Views (MAUI / XAML)
 
 - **Views:** Render screens and bind to view-model state.
 - **ViewModels:** Coordinate user actions and screen state; avoid embedding persistence or streak rules in UI code.
-- **Models:** Represent habits and completion events.
+- **Models:** Represent recurring habits, one-time tasks, and completion events with optional notes.
 - **Services:** Apply habit rules and calculate streaks using an injectable local-date/clock provider.
 - **SQLite repositories:** Load and save habits and completion records on-device.
 
@@ -102,7 +109,7 @@ Keep these pieces in the MAUI project initially. Add a separate backend, Clean A
 
 - The app must store core habit data locally in SQLite and work without a network connection.
 - Store the database in the platform's app-private storage.
-- Store completion history by habit ID and local completion date; enforce at most one completion per habit per date.
+- Store recurring-habit completion history by habit ID and local completion date; enforce at most one completion per habit per date. Store one-time tasks with their local due date and optional due time. Completion events may include an optional note and automatically captured UTC timestamp.
 - Do not collect or transmit habit data in the MVP.
 - SQLite is not encrypted by default. Do not store credentials or secrets in it. Revisit database encryption if the product later handles data requiring protection beyond the operating system's app sandbox.
 
@@ -123,6 +130,11 @@ Accounts, cross-device sync/backup, Firebase or another backend, in-app subscrip
 
 - Create a habit for selected weekdays; verify it appears only on those due days.
 - Complete a habit; verify its status and per-habit streak update and persist after app restart.
+- Add or edit an optional note on a completion; verify it is saved and does not alter completion state or streak.
+- Create a one-time task with a due date and optional due time; verify it appears in the task list and can be completed.
+- Verify a one-time task becomes overdue after its selected local due time, or after local midnight when no time was selected.
+- Verify free-text completion notes persist across app restart and do not affect streak calculations.
+- Verify completing, missing, or editing a one-time task never affects a recurring habit's streak.
 - Tap complete repeatedly; verify only one completion exists for that habit/date.
 - Verify one habit's completion or missed day does not alter another habit's streak.
 - Verify archived habits disappear from the active list without deleting their history.

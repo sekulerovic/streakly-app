@@ -6,7 +6,9 @@ This repository is for a habit and streak tracking application. Favor simplicity
 
 ## Product and visual direction
 
-- Keep the first release focused on a simple habit tracker: view today's habits, create and manage habits, and mark them complete.
+- The first release supports recurring habits and one-time dated tasks. Keep their behaviors distinct: recurring habits have selected weekdays and per-habit streaks; one-time tasks have a due date and optional time, but no streak.
+- Completion is the primary record. Free-text notes are optional context; do not infer completion or structured measurements from note text.
+- Defer structured metrics (duration, pages, distance, repetitions) and streaks for one-time tasks until a later milestone.
 - Use a clean interface based on orange accents and black/dark surfaces.
 - Preserve readable contrast and accessible text sizes; do not use orange for large text backgrounds.
 - Defer accounts, cloud sync, and backend services until a concrete product requirement calls for them.

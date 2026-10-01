@@ -4,6 +4,8 @@
 
 [Yapılacaklar ve mimari önerisi](TODO.md)
 
+[Use case'ler](docs/use-cases.md)
+
 Streakly App, insanların günlük eylemlerini, serilerini ve zaman içindeki ilerlemelerini takip ederek düzenli alışkanlıklar geliştirmelerine yardımcı olmak için tasarlanmış bir üretkenlik ve alışkanlık takip uygulamasıdır.
 
 ## Projenin amacı
