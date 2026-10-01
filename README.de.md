@@ -2,6 +2,8 @@
 
 **Sprachen:** [English](README.md) | [Türkçe](README.tr.md) | Deutsch
 
+[Projekt-Checkliste und Architektur (Türkisch)](TODO.md)
+
 Streakly App ist eine Produktivitäts- und Gewohnheiten-Tracking-App. Sie soll Menschen dabei helfen, Beständigkeit aufzubauen, indem sie tägliche Aktivitäten, Serien und Fortschritte im Zeitverlauf erfasst.
 
 ## Projektziel

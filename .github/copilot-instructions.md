@@ -4,6 +4,13 @@
 
 This repository is for a habit and streak tracking application. Favor simplicity, maintainability, and user value over over-engineering.
 
+## Product and visual direction
+
+- Keep the first release focused on a simple habit tracker: view today's habits, create and manage habits, and mark them complete.
+- Use a clean interface based on orange accents and black/dark surfaces.
+- Preserve readable contrast and accessible text sizes; do not use orange for large text backgrounds.
+- Defer accounts, cloud sync, and backend services until a concrete product requirement calls for them.
+
 ## General coding guidance
 
 - Keep code clear, typed, and easy to follow
