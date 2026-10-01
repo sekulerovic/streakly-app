@@ -13,7 +13,9 @@ Bu liste, Streakly'nin iOS ve Android'de çalışan basit bir alışkanlık taki
 - [ ] Her alışkanlık için ayrı seriyi hesapla; boşta kalan planlanmamış günler seriyi bozmasın
 - [ ] Yerel tarih ve saat kurallarını test et: gece yarısı öncesi/sonrası, kaçırılan planlı gün ve planlanmamış gün
 - [ ] Yaz/kış saati geçişi, saat dilimi değişikliği ve uygulamanın gece yarısında kapalı olması senaryolarını test et
-- [ ] Android emülatöründe temel akışları test et
+- [ ] Visual Studio Android emülatörünü kur; arayüzü geliştirirken uygulamayı emülatörde çalıştır ve XAML Hot Reload ile görsel değişiklikleri kontrol et
+- [ ] MVP öncesinde temel akışları en az bir gerçek Android telefonda doğrula
+- [ ] MVP öncesinde iOS Simulator'da veya fiziksel iPhone'da temel akışları doğrula (Mac ve Xcode gerekir)
 
 ## P1 — MVP sonrasında
 
@@ -25,7 +27,7 @@ Bu liste, Streakly'nin iOS ve Android'de çalışan basit bir alışkanlık taki
 
 - [ ] Hesap, yedekleme ve cihazlar arası eşitleme ihtiyacını değerlendir
 - [ ] Abonelik ve paywall ihtiyacını değerlendir; MVP'de zorunlu abonelik yok
-- [ ] iOS derleme, cihaz testi ve dağıtımını macOS/Xcode ile yapılandır
+- [ ] Mağaza dağıtımı ve yayınlama adımlarını yapılandır
 
 ## Önerilen basit mimari
 

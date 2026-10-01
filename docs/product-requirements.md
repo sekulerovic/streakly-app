@@ -112,6 +112,13 @@ Accounts, cross-device sync/backup, Firebase or another backend, in-app subscrip
 
 ## 6. Verification and acceptance tests
 
+### P0 UI test environments
+
+- **Primary development environment:** Visual Studio on Windows with the .NET MAUI workload and an Android emulator created through Android Device Manager. Run the app on the emulator during UI development; use XAML Hot Reload where supported to inspect visual changes without restarting for every edit.
+- **Device sanity check:** Before the MVP release, install and exercise the main flows on at least one physical Android phone. Emulator testing does not replace checks for touch behavior, text scaling, and real-device layout.
+- **iOS validation:** Before the MVP release, build and test on an iOS Simulator using a Mac with Xcode, or on a physical iPhone through the supported Mac-paired workflow. Windows alone cannot run the iOS Simulator or sign iOS builds.
+- Use the same core acceptance flows on both platforms: create/edit/archive a habit, select weekdays, complete today's habit, restart the app, and verify persisted state and streak.
+
 ### P0 functional tests
 
 - Create a habit for selected weekdays; verify it appears only on those due days.
