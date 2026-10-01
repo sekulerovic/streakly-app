@@ -135,6 +135,7 @@ Accounts, cross-device sync/backup, Firebase or another backend, in-app subscrip
 - Verify a one-time task becomes overdue after its selected local due time, or after local midnight when no time was selected.
 - Verify free-text completion notes persist across app restart and do not affect streak calculations.
 - Verify completing, missing, or editing a one-time task never affects a recurring habit's streak.
+- Verify that changing the device time zone preserves the saved task due date and that the due time is interpreted as local wall-clock time.
 - Tap complete repeatedly; verify only one completion exists for that habit/date.
 - Verify one habit's completion or missed day does not alter another habit's streak.
 - Verify archived habits disappear from the active list without deleting their history.

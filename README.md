@@ -30,11 +30,11 @@ An ASP.NET Core service may be added later if features require a shared backend,
 
 ## Repository status
 
-This repository is currently being initialized. The first deliverables are project documentation and coding guidance so the team can build the app consistently from the start.
+The repository contains the .NET MAUI Android/iOS starter app and initial product documentation. The habit and task features are not implemented yet.
 
 ## Planned structure
 
-- `src/` — .NET MAUI application and any shared code
+- `src/StreaklyApp/` — .NET MAUI application, platform entry points, and shared UI
 - `tests/` — automated tests
 - `docs/` — design and product documentation
 - `.github/` — repository automation and Copilot instructions
@@ -45,9 +45,9 @@ Install the supported .NET SDK, the .NET MAUI workload, and Git. Use Visual Stud
 
 To develop and run the app:
 
-1. Clone the repository.
+1. Open `StreaklyApp.slnx` in Visual Studio.
 2. Restore the .NET dependencies.
-3. Run the app on an Android emulator or device.
+3. Select `StreaklyApp` as the startup project and run it on an Android emulator or device.
 4. To build, run, or sign for iOS, use a Mac with Xcode. Visual Studio on Windows can connect to a paired Mac for iOS development.
 
 ## Development principles
@@ -61,7 +61,7 @@ To develop and run the app:
 ## Roadmap
 
 - Define product requirements and user flows
-- Scaffold the .NET MAUI app and configure Android and iOS targets
+- Implement the recurring habit and one-time task flows
 - Define the habit and check-in domain models
 - Implement habit creation and tracking
 - Add streak calculations and progress views

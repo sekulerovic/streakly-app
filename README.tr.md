@@ -30,11 +30,11 @@ Ortak bir arka uç, kullanıcı hesapları veya eşitleme gerektiren özellikler
 
 ## Depo durumu
 
-Bu depo şu anda ilk kurulum aşamasındadır. Ekibin tutarlı bir şekilde geliştirme yapabilmesi için ilk adım olarak proje dokümantasyonu ve kodlama yönergeleri hazırlanmaktadır.
+Depoda Android/iOS için başlangıç .NET MAUI uygulaması ve ilk ürün dokümantasyonu bulunur. Alışkanlık ve görev özellikleri henüz uygulanmamıştır.
 
 ## Planlanan yapı
 
-- `src/` — .NET MAUI uygulaması ve paylaşılan kodlar
+- `src/StreaklyApp/` — .NET MAUI uygulaması, platform giriş noktaları ve paylaşılan arayüz
 - `tests/` — otomatik testler
 - `docs/` — tasarım ve ürün dokümantasyonu
 - `.github/` — depo otomasyonu ve Copilot yönergeleri
@@ -45,9 +45,9 @@ Desteklenen .NET SDK'sını, .NET MAUI iş yükünü ve Git'i yükleyin. Windows
 
 Uygulamayı geliştirmek ve çalıştırmak için:
 
-1. Depoyu klonlayın.
+1. Visual Studio'da `StreaklyApp.slnx` çözümünü açın.
 2. .NET bağımlılıklarını geri yükleyin.
-3. Uygulamayı bir Android emülatöründe veya cihazında çalıştırın.
+3. Başlangıç projesi olarak `StreaklyApp`'i seçip uygulamayı Android emülatöründe veya cihazında çalıştırın.
 4. iOS için derleme, çalıştırma veya imzalama işlemlerinde Xcode yüklü bir Mac kullanın. Windows'taki Visual Studio, iOS geliştirme için eşleştirilmiş bir Mac'e bağlanabilir.
 
 ## Geliştirme ilkeleri
@@ -61,7 +61,7 @@ Uygulamayı geliştirmek ve çalıştırmak için:
 ## Yol haritası
 
 - Ürün gereksinimlerini ve kullanıcı akışlarını tanımlamak
-- .NET MAUI uygulamasını oluşturmak ve Android ile iOS hedeflerini yapılandırmak
+- Tekrarlayan alışkanlık ve tek seferlik görev akışlarını uygulamak
 - Alışkanlık ve günlük kayıt alan modellerini tanımlamak
 - Alışkanlık oluşturma ve takip özelliklerini uygulamak
 - Seri hesaplamaları ve ilerleme ekranlarını eklemek

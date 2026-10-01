@@ -25,6 +25,7 @@ This repository is for a habit and streak tracking application. Favor simplicity
 
 - Build the mobile app with .NET MAUI and C#, targeting both Android and iOS.
 - Prefer MAUI controls and platform APIs over adding a separate web front end.
+- Keep app startup at the project root; place screens in `Views/`, screen state in `ViewModels/`, domain entities in `Models/`, business rules in `Services/`, and persistence in `Data/` or `Repositories/` as those features are implemented.
 - Keep UI code, view models, and habit-domain logic separated according to existing project patterns.
 - Keep platform-specific behavior behind clear platform abstractions or platform-specific files.
 - Use dependency injection and asynchronous APIs for I/O-bound work.

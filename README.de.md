@@ -30,11 +30,11 @@ Ein ASP.NET-Core-Dienst kann später ergänzt werden, falls Funktionen ein gemei
 
 ## Repository-Status
 
-Dieses Repository befindet sich derzeit im Aufbau. Als erste Schritte werden die Projektdokumentation und Richtlinien für die Zusammenarbeit erstellt, damit das Team von Anfang an einheitlich entwickeln kann.
+Das Repository enthält die .NET-MAUI-Startanwendung für Android/iOS und die erste Produktdokumentation. Die Gewohnheits- und Aufgabenfunktionen sind noch nicht implementiert.
 
 ## Geplante Struktur
 
-- `src/` — .NET-MAUI-Anwendung und gemeinsam genutzter Code
+- `src/StreaklyApp/` — .NET-MAUI-Anwendung, Plattform-Einstiegspunkte und gemeinsame UI
 - `tests/` — automatisierte Tests
 - `docs/` — Design- und Produktdokumentation
 - `.github/` — Repository-Automatisierung und Copilot-Anweisungen
@@ -45,9 +45,9 @@ Installiere das unterstützte .NET SDK, die .NET-MAUI-Workload und Git. Verwende
 
 So entwickelst und startest du die App:
 
-1. Klone das Repository.
+1. Öffne `StreaklyApp.slnx` in Visual Studio.
 2. Stelle die .NET-Abhängigkeiten wieder her.
-3. Starte die App auf einem Android-Emulator oder -Gerät.
+3. Wähle `StreaklyApp` als Startprojekt und starte die App auf einem Android-Emulator oder -Gerät.
 4. Für das Erstellen, Ausführen oder Signieren für iOS benötigst du einen Mac mit Xcode. Visual Studio unter Windows kann für die iOS-Entwicklung mit einem gekoppelten Mac verbunden werden.
 
 ## Entwicklungsgrundsätze
@@ -61,7 +61,7 @@ So entwickelst und startest du die App:
 ## Roadmap
 
 - Produktanforderungen und Nutzerabläufe definieren
-- Die .NET-MAUI-App erstellen und Android- sowie iOS-Ziele konfigurieren
+- Die Abläufe für wiederkehrende Gewohnheiten und einmalige Aufgaben implementieren
 - Domänenmodelle für Gewohnheiten und Check-ins definieren
 - Das Anlegen und Erfassen von Gewohnheiten implementieren
 - Serienberechnungen und Fortschrittsansichten ergänzen
